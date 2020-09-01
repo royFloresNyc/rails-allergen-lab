@@ -9,16 +9,17 @@ class RecipesController < ApplicationController
 
     def new
         @recipe = Recipe.new
+        @users = User.all
     end 
 
     def create
-        @recipe = Recipe.create(recipe_params)
-
+        recipe = Recipe.create(recipe_params)
+        redirect_to recipe_path(recipe)
     end 
 
     private
 
     def recipe_params
-        params.require(:recipe).permit(:user_id, :title )
+        params.require(:recipe).permit(:user_id, :title, :ingredients => {})
     end 
 end
