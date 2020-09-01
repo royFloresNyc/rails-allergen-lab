@@ -1,0 +1,9 @@
+<h1>Recipes</h1>
+<ul>
+    <% @recipes.all.each do |recipe| %>
+        <li>
+            <%= link_to recipe.title, recipe_path(recipe) %> - 
+            <%= pluralize(recipe.ingredients.count, "ingredient") %>
+        </li>
+    <% end %>
+</ul>
